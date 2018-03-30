@@ -4,6 +4,7 @@ public class Operation {
     private int pid;
     private String operation;
     private int address;
+    private int pagetable;
 
 
 
@@ -12,9 +13,6 @@ public class Operation {
         this.pid = pidArg;
         this.operation = operationArg;
         this.address = addressArg;
-
-
-
     }
 
     @Override

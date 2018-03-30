@@ -9,31 +9,41 @@ import java.io.File;
 
 public class GUI extends JDialog {
     private Logic logic;
-    private JPanel contentPane;
-    private JButton buttonRun;
-    private JButton buttonOpenFile;
-    private JButton buttonCancel;
-    private JButton buttonFileOpen;
-    private JLabel textFieldFile;
-    private JPanel graph1JPanel;
-    private JPanel graph2JPanel;
+    private JPanel contentPanel;
+    private JButton executeAllButton;
+    private JButton executeOneButton;
+    private JButton readXMLButton;
+    private JPanel buttons;
+    private JTextField textFieldFileName;
+    private JTextField textFieldTimer;
+    private JTextField textFieldInstruction;
+    private JTextField textFieldAdress;
+    private JTextField textFieldFrame;
+    private JTextField textFieldOffset;
+    private JPanel Data;
 
 
     public GUI() {
         logic = new Logic();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        contentPane.setPreferredSize(new Dimension(screenSize.width/2, screenSize.height/2));
-        setContentPane(contentPane);
+        contentPanel.setPreferredSize(new Dimension(screenSize.width/2, screenSize.height/2));
+        setContentPane(contentPanel);
 
         setModal(true);
-        getRootPane().setDefaultButton(buttonRun);
+        getRootPane().setDefaultButton(executeOneButton);
 
-        buttonRun.addActionListener(new ActionListener() {
+        executeOneButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                onRun();
+                onReadOne();
             }
         });
-        buttonOpenFile.addActionListener(new ActionListener() {
+        executeAllButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                onReadAll();
+            }
+        });
+
+        readXMLButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onFileOpen();
             }
@@ -49,29 +59,32 @@ public class GUI extends JDialog {
         });
 
         // call onCancel() on ESCAPE
-        contentPane.registerKeyboardAction(new ActionListener() {
+        contentPanel.registerKeyboardAction(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
     }
 
-    private void onRun() {
-        if(logic.getFile().equals(""))
-            System.out.println("No file");
-        else{
-            System.out.println("run");
-            logic.execute("PLACEHOLDER");
-        }
+
+
+    private void onReadOne() {
+        logic.executeOne();
+    }
+
+    public void onReadAll() {
+        logic.executeAll();
     }
 
     private void onFileOpen() {
         JFileChooser fc = new JFileChooser();
-        fc.showOpenDialog(contentPane);
+        fc.showOpenDialog(contentPanel);
         File file = fc.getSelectedFile();
         if(file != null){
-            logic.setFile(file.getAbsolutePath());
+            logic.readFile(file.getAbsolutePath());
+            this.textFieldFileName.setText( file.getAbsolutePath());
         }
+
 
     }
 

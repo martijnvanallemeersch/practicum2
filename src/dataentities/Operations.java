@@ -18,4 +18,6 @@ public class Operations {
             operationsList.add(operationArg);
         }
     }
+
+    public List<Operation> getOperationsList() {return this.operationsList;}
 }

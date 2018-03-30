@@ -8,26 +8,24 @@ import javax.swing.*;
 public class Logic {
 
     private XMLReader io;
-    private String file;
+    private Operations operations;
 
 
     public Logic() {
         io = new XMLReader();
-
-    }
-
-    public String getFile() {
-        return file;
-    }
-
-    public void setFile(String file) {
-        this.file = file;
     }
 
 
-    public void execute(String type)
-    {
-        Operations operations = io.readXMLFile(this.file);
+    public void readFile(String file) {
+        operations = io.readXMLFile(file);
+    }
+
+
+    public void executeOne(){
+
+    }
+
+    public void executeAll(){
 
     }
 }
