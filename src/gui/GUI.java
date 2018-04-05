@@ -1,6 +1,6 @@
 package gui;
 
-import logic.Logic;
+import logic.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,7 +8,7 @@ import java.awt.event.*;
 import java.io.File;
 
 public class GUI extends JDialog {
-    private Logic logic;
+    private logic.MemController logic;
     private JPanel contentPanel;
     private JButton executeAllButton;
     private JButton executeOneButton;
@@ -21,10 +21,12 @@ public class GUI extends JDialog {
     private JTextField textFieldFrame;
     private JTextField textFieldOffset;
     private JPanel Data;
+    private JTextField textFieldRAMWrites;
+    private JTextField textFieldHDDWRites;
 
 
     public GUI() {
-        logic = new Logic();
+        logic = new logic.MemController();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         contentPanel.setPreferredSize(new Dimension(screenSize.width/2, screenSize.height/2));
         setContentPane(contentPanel);
@@ -69,11 +71,16 @@ public class GUI extends JDialog {
 
 
     private void onReadOne() {
-        logic.executeOne();
+        logic.fetchNext();
+        logic.executeNext();
+        this.textFieldInstruction.setText(logic.getCurrentInstruction().toString());
+        this.textFieldFrame.setText(logic.getCurrentInstruction().toString());
+        this.textFieldRAMWrites.setText(logic.getToRAMWrites()+"");
+        this.textFieldHDDWRites.setText(logic.getToHDDWrites()+"");
+
     }
 
-    public void onReadAll() {
-        logic.executeAll();
+    public void onReadAll() {logic.executeNext();
     }
 
     private void onFileOpen() {

@@ -20,4 +20,15 @@ public class Operation {
         return "<PID>" + pid + ":\t Operation: " + operation + "\t Address: " + address;
     }
 
+    public int getPid() {
+        return pid;
+    }
+
+    public String getOperation() {
+        return operation;
+    }
+
+    public int getAddress() {
+        return address;
+    }
 }
