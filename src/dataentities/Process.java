@@ -12,7 +12,7 @@ public class Job {
 	
 	public Job(int pid) {
 		this.pid = pid;
-		ptEntries= new ArrayList<>(16);
+		ptEntries= new ArrayList<>(12);
 		for(int i=0; i<16;i++){
 			ptEntries.add(new PageTableEntry(i,false,false));
 		}
@@ -26,6 +26,12 @@ public class Job {
 		return result;
 	}
 
+	@Override
+	public String toString() {
+		return "Job{" +
+				"pid=" + pid +
+				'}';
+	}
 
 	public void incrementToHDD () {
 		nToHDD++;
