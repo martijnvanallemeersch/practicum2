@@ -1,7 +1,6 @@
 package io;
 
-import dataentities.Operation;
-import dataentities.Operations;
+import dataentities.Instruction;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -27,7 +26,7 @@ public class XMLReader {
             //read this - http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
             doc.getDocumentElement().normalize();
 
-            NodeList nList = doc.getElementsByTagName("instruction");
+            NodeList nList = doc.getElementsByTagName("Instruction");
 
             for (int temp = 0; temp < nList.getLength(); temp++) {
 
@@ -40,8 +39,8 @@ public class XMLReader {
                     int pid = Integer.parseInt(getTagValue("processID", eElement));
                     String operation = getTagValue("operation", eElement);
                     int address = Integer.parseInt(getTagValue("address", eElement));
-                    Operation tempOperation = new Operation(pid, operation, address);
-                    processes.addOperation(tempOperation);
+                    Instruction tempInstruction = new Instruction(pid, operation, address);
+                    processes.addOperation(tempInstruction);
                 }
             }
         } catch (Exception e) {

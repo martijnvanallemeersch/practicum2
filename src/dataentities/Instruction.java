@@ -1,14 +1,13 @@
 package dataentities;
 
-public class Operation {
+public class Instruction {
     private int pid;
     private String operation;
     private int address;
-    private int pagetable;
 
 
 
-    public Operation(int pidArg, String operationArg, int addressArg)
+    public Instruction(int pidArg, String operationArg, int addressArg)
     {
         this.pid = pidArg;
         this.operation = operationArg;
@@ -17,7 +16,7 @@ public class Operation {
 
     @Override
     public String toString() {
-        return "<PID>" + pid + ":\t Operation: " + operation + "\t Address: " + address;
+        return "<PID>" + pid + ":\t Instruction: " + operation + "\t Address: " + address;
     }
 
     public int getPid() {

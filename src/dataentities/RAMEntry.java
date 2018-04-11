@@ -18,7 +18,7 @@ public class RAMEntry {
 	}
 
 	//getters & setters
-	public int getFrameNr() {return frameNr;}
+	public int getFrameNumber() {return frameNr;}
 	public void setFrameNr(int frameNr) {this.frameNr = frameNr;}
 	
 	public int getPid() {return pid;}

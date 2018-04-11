@@ -2,6 +2,7 @@ package dataentities;
 
 public class PageTableEntry {
 
+    private String process;
     private int pageNumber;
     private boolean present;
     private boolean modified;
@@ -60,4 +61,11 @@ public class PageTableEntry {
                 ", lastAccess=" + lastAccess + ", frameNr=" + frameNumber + "]";
     }
 
+    public String getProcess() {
+        return process;
+    }
+
+    public void setProcess(String process) {
+        this.process = process;
+    }
 }

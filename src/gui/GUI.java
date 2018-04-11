@@ -1,6 +1,6 @@
 package gui;
 
-import logic.*;
+import logic.Logic;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,14 +8,14 @@ import java.awt.event.*;
 import java.io.File;
 
 public class GUI extends JDialog {
-    private logic.MemController logic;
+    private Logic logic;
     private JPanel contentPanel;
     private JButton executeAllButton;
     private JButton executeOneButton;
     private JButton readXMLButton;
     private JPanel buttons;
     private JTextField textFieldFileName;
-    private JTextField textFieldTimer;
+    private JTextField textFieldClock;
     private JTextField textFieldInstruction;
     private JTextField textFieldAdress;
     private JTextField textFieldFrame;
@@ -23,12 +23,16 @@ public class GUI extends JDialog {
     private JPanel Data;
     private JTextField textFieldRAMWrites;
     private JTextField textFieldHDDWRites;
+    private JTextField textFieldTotalWrites;
+    private JList listPTE;
+    private JList listRAM;
+    private JTable tableRam;
 
 
     public GUI() {
-        logic = new logic.MemController();
+        logic = new Logic();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        contentPanel.setPreferredSize(new Dimension(screenSize.width/2, screenSize.height/2));
+        contentPanel.setPreferredSize(new Dimension(screenSize.width / 2, screenSize.height / 2));
         setContentPane(contentPanel);
 
         setModal(true);
@@ -69,36 +73,72 @@ public class GUI extends JDialog {
     }
 
 
-
     private void onReadOne() {
-        logic.fetchNext();
-        logic.executeNext();
-        this.textFieldInstruction.setText(logic.getCurrentInstruction().toString());
-        this.textFieldFrame.setText(logic.getCurrentInstruction().toString());
-        this.textFieldRAMWrites.setText(logic.getToRAMWrites()+"");
-        this.textFieldHDDWRites.setText(logic.getToHDDWrites()+"");
-
+        if (logic.getMemoryController() != null) logic.executeOne();
     }
 
-    public void onReadAll() {logic.executeNext();
+    public void onReadAll() {
+        if (logic.getMemoryController() != null) logic.executeAll();
     }
 
     private void onFileOpen() {
         JFileChooser fc = new JFileChooser();
         fc.showOpenDialog(contentPanel);
         File file = fc.getSelectedFile();
-        if(file != null){
-            logic.readFile(file.getAbsolutePath());
-            this.textFieldFileName.setText( file.getAbsolutePath());
+        if (file != null) {
+            logic.createMemController(file.getAbsolutePath(), this);
+            this.textFieldFileName.setText(file.getAbsolutePath());
         }
-
-
     }
+
+
+    public void updateFields() {
+        this.textFieldClock.setText(logic.getMemoryController().getClock() +"");
+        this.textFieldRAMWrites.setText(logic.getMemoryController().getToRAMWrites() + "");
+        this.textFieldHDDWRites.setText(logic.getMemoryController().getToHDDWrites() + "");
+        this.textFieldTotalWrites.setText(logic.getMemoryController().getTotalWrites() + "");
+
+        this.textFieldInstruction.setText(logic.getMemoryController().getCurrentInstruction().getOperation() + " PID:" + logic.getMemoryController().getCurrentInstruction().getPid());
+        this.textFieldAdress.setText(logic.getMemoryController().getCurrentInstruction().getAddress() + "");
+
+        if (logic.getMemoryController().getSplittedAddress() != null)
+            this.textFieldFrame.setText(logic.getMemoryController().getSplittedAddress()[0] + "");
+        else this.textFieldFrame.setText("");
+
+        if (logic.getMemoryController().getSplittedAddress() != null)
+            this.textFieldOffset.setText(logic.getMemoryController().getSplittedAddress()[1] + "");
+        else this.textFieldFrame.setText("");
+
+
+        this.listPTE.setListData(logic.getMemoryController().getPageTableList().toArray() );
+        this.listRAM.setListData(logic.getMemoryController().getRamEntryList().toArray() );
+    }
+
+    /*public void updateTable() {
+
+        RAMEntry[] entries = logic.getMemoryController().getRamEntryList();
+        Object[][] data = new Object[entries.length][3];
+        String columnNames[] = {"PID","FrameNR","PageNR"};
+        int i=0;
+
+        for(RAMEntry entry : entries) {
+            data[i][0] = entry.getPid();
+            data[i][1] = entry.getFrameNumber();
+            data[i][2] = entry.getPageNr();
+            i++;
+        }
+        System.out.println("update");
+
+        this.tableRam = new JTable(data, columnNames);
+        pack();
+
+    }*/
 
     private void onCancel() {
         // add your code here if necessary
         dispose();
     }
+
 
     public static void main(String[] args) {
         try {
@@ -119,8 +159,6 @@ public class GUI extends JDialog {
     }
 
 
-
     private void createUIComponents() {
-        // TODO: place custom component creation code here
     }
 }

@@ -3,14 +3,14 @@ package dataentities;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Job {
+public class Process {
 
 	private int pid;
 	private List<PageTableEntry> ptEntries;
 	private int nToHDD;
 	private int nToRam;
 	
-	public Job(int pid) {
+	public Process(int pid) {
 		this.pid = pid;
 		ptEntries= new ArrayList<>(12);
 		for(int i=0; i<16;i++){
@@ -28,7 +28,7 @@ public class Job {
 
 	@Override
 	public String toString() {
-		return "Job{" +
+		return "Process{" +
 				"pid=" + pid +
 				'}';
 	}
