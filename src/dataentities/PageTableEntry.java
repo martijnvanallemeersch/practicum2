@@ -4,13 +4,15 @@ public class PageTableEntry {
 
     private String process;
     private int pageNumber;
+
     private boolean present;
     private boolean modified;
     private int lastAccess;
     private int frameNumber;
 
-    public PageTableEntry(int pageNumber, boolean present, boolean modified) {
+    public PageTableEntry(int pageNumber,int frameNumber, boolean present, boolean modified) {
         this.pageNumber = pageNumber;
+        this.frameNumber = frameNumber;
         this.present = present;
         this.modified = modified;
     }

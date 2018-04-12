@@ -4,29 +4,28 @@ import gui.GUI;
 import io.XMLReader;
 
 public class Logic {
-    private MemController memoryController;
+    private MemControllerRW memoryController;
     private XMLReader xmlReader;
 
     public Logic() {
         this.xmlReader = new XMLReader();
     }
 
-    public MemController getMemoryController() {
+    public MemControllerRW getMemoryController() {
         return memoryController;
     }
 
     public void createMemController(String file, GUI gui){
-        this.memoryController = new MemController(xmlReader.readXMLFile(file).getOperationsList());
-        this.memoryController.addGUIListener(gui);
+        this.memoryController = new MemControllerRW(xmlReader.readXMLFile(file));
+        this.memoryController.setGui(gui);
     }
 
     public void executeOne() {
-        if(!memoryController.executeNext()) System.out.println("No more instructions!");
+        memoryController.executeOne();
     }
 
     public void executeAll() {
-        while(true) {
-            memoryController.executeNext();
-        }
+        while(memoryController.executeOne()) {
+            }
     }
 }

@@ -94,45 +94,27 @@ public class GUI extends JDialog {
 
     public void updateFields() {
         this.textFieldClock.setText(logic.getMemoryController().getClock() +"");
-        this.textFieldRAMWrites.setText(logic.getMemoryController().getToRAMWrites() + "");
-        this.textFieldHDDWRites.setText(logic.getMemoryController().getToHDDWrites() + "");
-        this.textFieldTotalWrites.setText(logic.getMemoryController().getTotalWrites() + "");
+        //this.textFieldRAMWrites.setText(logic.getMemoryController().getToRAMWrites() + "");
+        //this.textFieldHDDWRites.setText(logic.getMemoryController().getToHDDWrites() + "");
+        //this.textFieldTotalWrites.setText(logic.getMemoryController().getTotalWrites() + "");
 
         this.textFieldInstruction.setText(logic.getMemoryController().getCurrentInstruction().getOperation() + " PID:" + logic.getMemoryController().getCurrentInstruction().getPid());
         this.textFieldAdress.setText(logic.getMemoryController().getCurrentInstruction().getAddress() + "");
 
-        if (logic.getMemoryController().getSplittedAddress() != null)
+        /*if (logic.getMemoryController().getSplittedAddress() != null)
             this.textFieldFrame.setText(logic.getMemoryController().getSplittedAddress()[0] + "");
         else this.textFieldFrame.setText("");
 
         if (logic.getMemoryController().getSplittedAddress() != null)
             this.textFieldOffset.setText(logic.getMemoryController().getSplittedAddress()[1] + "");
         else this.textFieldFrame.setText("");
+*/
 
-
-        this.listPTE.setListData(logic.getMemoryController().getPageTableList().toArray() );
-        this.listRAM.setListData(logic.getMemoryController().getRamEntryList().toArray() );
+        this.listPTE.setListData(logic.getMemoryController().getPageTableList().get(0).pageTableEntryList().toArray()  );
+        this.listRAM.setListData(logic.getMemoryController().getRamEntries());
     }
 
-    /*public void updateTable() {
 
-        RAMEntry[] entries = logic.getMemoryController().getRamEntryList();
-        Object[][] data = new Object[entries.length][3];
-        String columnNames[] = {"PID","FrameNR","PageNR"};
-        int i=0;
-
-        for(RAMEntry entry : entries) {
-            data[i][0] = entry.getPid();
-            data[i][1] = entry.getFrameNumber();
-            data[i][2] = entry.getPageNr();
-            i++;
-        }
-        System.out.println("update");
-
-        this.tableRam = new JTable(data, columnNames);
-        pack();
-
-    }*/
 
     private void onCancel() {
         // add your code here if necessary

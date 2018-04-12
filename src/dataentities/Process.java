@@ -6,6 +6,7 @@ import java.util.List;
 public class Process {
 
 	private int pid;
+	private String operation;
 	private List<PageTableEntry> ptEntries;
 	private int nToHDD;
 	private int nToRam;
@@ -14,7 +15,7 @@ public class Process {
 		this.pid = pid;
 		ptEntries= new ArrayList<>(12);
 		for(int i=0; i<16;i++){
-			ptEntries.add(new PageTableEntry(i,false,false));
+			ptEntries.add(new PageTableEntry(i,-1,false,false));
 		}
 	}
 	

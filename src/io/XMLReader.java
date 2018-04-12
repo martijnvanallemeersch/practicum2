@@ -9,11 +9,13 @@ import org.w3c.dom.NodeList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
+import java.util.LinkedList;
+import java.util.List;
 
 public class XMLReader {
 
-    public Operations readXMLFile(String path) {
-        Operations processes = new Operations();
+    public List<Instruction> readXMLFile(String path) {
+        List<Instruction> instructionList= new LinkedList();
         System.out.println(path);
         try {
 
@@ -26,7 +28,7 @@ public class XMLReader {
             //read this - http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
             doc.getDocumentElement().normalize();
 
-            NodeList nList = doc.getElementsByTagName("Instruction");
+            NodeList nList = doc.getElementsByTagName("instruction");
 
             for (int temp = 0; temp < nList.getLength(); temp++) {
 
@@ -40,7 +42,7 @@ public class XMLReader {
                     String operation = getTagValue("operation", eElement);
                     int address = Integer.parseInt(getTagValue("address", eElement));
                     Instruction tempInstruction = new Instruction(pid, operation, address);
-                    processes.addOperation(tempInstruction);
+                    instructionList.add(tempInstruction);
                 }
             }
         } catch (Exception e) {
@@ -48,7 +50,7 @@ public class XMLReader {
         }
 
 
-        return processes;
+        return instructionList;
     }
 
 
