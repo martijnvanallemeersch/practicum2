@@ -3,9 +3,7 @@ package logic;
 
 import dataentities.*;
 import gui.GUI;
-import sun.jvm.hotspot.debugger.Page;
 
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
@@ -18,6 +16,7 @@ public class MemControllerRW {
     private List<PageTable> pageTableList; // PageTable for each process
     private Instruction currentInstruction;
     private int clock;
+    private List<PageTableEntry> pteInRam;
 
     private int processAmountInRAM;
     int[] splittedAddress;
@@ -34,6 +33,7 @@ public class MemControllerRW {
         this.instructionList = instructionList;
         this.pageTableList = new LinkedList<>();
         this.ramEntries = new RAMEntry[SystemVariables.RAMFRAMES];
+        this.pteInRam = new LinkedList();
 
         this.clock = 0;
         this.processAmountInRAM= 0;
@@ -86,16 +86,24 @@ public class MemControllerRW {
 
                     //set in PT the PTE's in RAM
                     pt.moveEntryToRAM(i, i,this.clock);
+                    pteInRam.add(pt.getpageTableEntry(i));
                 }
                 processAmountInRAM++;
                 break;
             case 1:
                 //Search the 6 frames with the lowest LRU and swap them out
-                List<PageTableEntry> leastused = pageTableList.get(0).pageTableEntryList().stream().sorted(Comparator.comparingInt(PageTableEntry::getLastAccess)).collect(Collectors.toList()).subList(0,5);
-                System.out.println("Leastused: " + leastused);
+                List<PageTableEntry> leastused = pteInRam.stream().sorted(Comparator.comparingInt(PageTableEntry::getLastAccess)).collect(Collectors.toList()).subList(0,5);
+
+                pteInRam.remove(leastused);
                 for (int i = 0; i < leastused.size(); i++) {
                     int frameNumber = leastused.get(i).getFrameNumber();
-                    ramEntries[frameNumber] = pt.
+                    ramEntries[frameNumber] = new RAMEntry(frameNumber,pt.getPid(),pt.pageTableEntryList().get(i).getPageNumber());
+                    pteInRam.add(pt.pageTableEntryList().get(i));
+
+                    //set the pte to the ram
+                    pt.moveEntryToRAM(i,frameNumber,clock);
+
+                    pageTableList.get(0).moveEntryToHDD(leastused.get(i).getPageNumber());
                 }
 
                 processAmountInRAM++;

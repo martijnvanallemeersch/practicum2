@@ -16,17 +16,17 @@ public class PageTable {
         }
     }
 
-    public void moveEntryToRAM(int pageTableId, int frameNumber, int clock) {
+    public void moveEntryToRAM(int pageTableEntry, int frameNumber, int clock) {
         nToRam++;
-        pageTableEntryList.get(pageTableId).setLastAccess(clock);
-        pageTableEntryList.get(pageTableId).setPresent(true);
-        pageTableEntryList.get(pageTableId).setFrameNumber(frameNumber);
+        pageTableEntryList.get(pageTableEntry).setLastAccess(clock);
+        pageTableEntryList.get(pageTableEntry).setPresent(true);
+        pageTableEntryList.get(pageTableEntry).setFrameNumber(frameNumber);
     }
 
-    public void moveEntryToHDD(int pageTableId) {
+    public void moveEntryToHDD(int pageTableEntry) {
         nToHDD++;
-        pageTableEntryList.get(pageTableId).setPresent(false);
-        pageTableEntryList.get(pageTableId).setFrameNumber(-1);
+        pageTableEntryList.get(pageTableEntry).setPresent(false);
+        pageTableEntryList.get(pageTableEntry).setFrameNumber(-1);
 
     }
     public void incrementToHDD() {
