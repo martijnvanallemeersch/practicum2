@@ -47,7 +47,7 @@ public class MemControllerRW {
              gui.updateFields();
 
         } else canExecute = false;
-
+        clock++;
         return canExecute;
     }
 
@@ -114,18 +114,14 @@ public class MemControllerRW {
                         temp = pageTable.pageTableEntryList().stream().filter(pte-> pte.isPresent()).sorted(Comparator.comparingInt(PageTableEntry::getLastAccess)).collect(Collectors.toList()).subList(0,2);
                     leastUsed.addAll(temp);
                 }
-                leastUsed.forEach(lu-> System.out.println(lu));
 
-                for (int i = 0; i < pageTableList.size()-1; i++) {
-                    for (int j = 0; j < 2; j++) {
-                        int pageNumber =  leastUsed.get(i+j).getPageNumber();
-                        int frameNumber = leastUsed.get(i+j).getFrameNumber();
-                        PageTable currentPT = pageTableList.get(i);
-                        currentPT.moveEntryToHDD(pageNumber);
-                        pt.moveEntryToRAM(i,pageNumber, clock);
-                        System.out.println(i + " " + j);
-                        ramEntries[frameNumber] = new RAMEntry(frameNumber,pt.getPid(),pt.pageTableEntryList().get(i+j).getPageNumber());
-                    }
+                for (int i = 0; i < leastUsed.size(); i++) {
+                    int pageNumber =  leastUsed.get(i).getPageNumber();
+                    int frameNumber = leastUsed.get(i).getFrameNumber();
+                    PageTable currentPT = pageTableList.get(i/2);
+                    currentPT.moveEntryToHDD(pageNumber);
+                    pt.moveEntryToRAM(i,pageNumber, clock);
+                    ramEntries[frameNumber] = new RAMEntry(frameNumber,pt.getPid(),pt.pageTableEntryList().get(i).getPageNumber());
                 }
 
                 break;
