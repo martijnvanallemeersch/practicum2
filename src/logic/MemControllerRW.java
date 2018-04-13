@@ -117,27 +117,45 @@ public class MemControllerRW {
                     leastUsed.addAll(temp);
                 }
 
+                pteInRam.remove(leastUsed);
                 for (int i = 0; i < leastUsed.size(); i++) {
                     int pageNumber =  leastUsed.get(i).getPageNumber();
                     int frameNumber = leastUsed.get(i).getFrameNumber();
                     PageTable currentPT = pageTableList.get(i/2);
                     currentPT.moveEntryToHDD(pageNumber);
                     pt.moveEntryToRAM(i,pageNumber, clock);
+                    pteInRam.add(pt.getpageTableEntry(i));
                     ramEntries[frameNumber] = new RAMEntry(frameNumber,pt.getPid(),pt.pageTableEntryList().get(i).getPageNumber());
                 }
 
                 break;
             case 3:
-                List<PageTableEntry> leastUsed = new LinkedList<>();
+                List<PageTableEntry> leastUsed1 = new LinkedList<>();
                 for(PageTable pageTable : pageTableList){
-                    List temp = new LinkedList();
+                    PageTableEntry temp = null;
                     if(pageTable.pageTableEntryList().stream().filter(pte-> pte.isPresent()).collect(Collectors.toList()).size() == 4)
-                        temp = pageTable.pageTableEntryList().stream().filter(pte-> pte.isPresent()).sorted(Comparator.comparingInt(PageTableEntry::getLastAccess)).collect(Collectors.toList()).subList(0,2);
-                    leastUsed.addAll(temp);
+                        temp = pageTable.pageTableEntryList().stream().filter(pte-> pte.isPresent()).sorted(Comparator.comparingInt(PageTableEntry::getLastAccess)).collect(Collectors.toList()).get(0);
+                    leastUsed1.add(temp);
+                }
+
+                pteInRam.remove(leastUsed1);
+                for (int i = 0; i < leastUsed1.size(); i++) {
+                    int pageNumber =  leastUsed1.get(i).getPageNumber();
+                    int frameNumber = leastUsed1.get(i).getFrameNumber();
+                    PageTable currentPT = pageTableList.get(i);
+                    currentPT.moveEntryToHDD(pageNumber);
+                    pt.moveEntryToRAM(i,pageNumber, clock);
+                    pteInRam.add(pt.getpageTableEntry(i));
+                    ramEntries[frameNumber] = new RAMEntry(frameNumber,pt.getPid(),pt.pageTableEntryList().get(i).getPageNumber());
                 }
                 //TODO: Same as above but for more processes.
                 break;
         }
+        processAmountInRAM++;
+    }
+
+    private void test() {
+
     }
 
 
