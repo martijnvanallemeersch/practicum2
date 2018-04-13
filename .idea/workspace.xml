@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a83619c-1a89-4e1d-9ce2-beec4b5c25db" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/GUI.form" afterPath="$PROJECT_DIR$/src/gui/GUI.form" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logic/MemControllerRW.java" afterPath="$PROJECT_DIR$/src/logic/MemControllerRW.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -18,16 +17,16 @@
       <file leaf-file-name="MemControllerRW.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/logic/MemControllerRW.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="123" column="37" lean-forward="false" selection-start-line="123" selection-start-column="37" selection-end-line="123" selection-end-column="37" />
+            <state relative-caret-position="504">
+              <caret line="142" column="0" lean-forward="false" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#643#644#0" expanded="true" />
                 <element signature="e#673#674#0" expanded="true" />
-                <marker date="1523619244219" expanded="false" signature="4823:4834" ph=" { " />
-                <marker date="1523619244219" expanded="false" signature="4847:4853" ph=" }" />
-                <marker date="1523619244219" expanded="false" signature="4901:4912" ph=" { " />
-                <marker date="1523619244219" expanded="false" signature="4938:4944" ph=" }" />
+                <marker date="1523619504568" expanded="false" signature="5567:5578" ph=" { " />
+                <marker date="1523619504568" expanded="false" signature="5591:5597" ph=" }" />
+                <marker date="1523619504568" expanded="false" signature="5645:5656" ph=" { " />
+                <marker date="1523619504568" expanded="false" signature="5682:5688" ph=" }" />
               </folding>
             </state>
           </provider>
@@ -361,7 +360,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69092000" />
+    <option name="totallyTimeSpent" value="69311000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -375,7 +374,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32417583" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32417583" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -764,16 +763,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/logic/MemControllerRW.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="123" column="37" lean-forward="false" selection-start-line="123" selection-start-column="37" selection-end-line="123" selection-end-column="37" />
+        <state relative-caret-position="504">
+          <caret line="142" column="0" lean-forward="false" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#643#644#0" expanded="true" />
             <element signature="e#673#674#0" expanded="true" />
-            <marker date="1523619244219" expanded="false" signature="4823:4834" ph=" { " />
-            <marker date="1523619244219" expanded="false" signature="4847:4853" ph=" }" />
-            <marker date="1523619244219" expanded="false" signature="4901:4912" ph=" { " />
-            <marker date="1523619244219" expanded="false" signature="4938:4944" ph=" }" />
+            <marker date="1523619504568" expanded="false" signature="5567:5578" ph=" { " />
+            <marker date="1523619504568" expanded="false" signature="5591:5597" ph=" }" />
+            <marker date="1523619504568" expanded="false" signature="5645:5656" ph=" { " />
+            <marker date="1523619504568" expanded="false" signature="5682:5688" ph=" }" />
           </folding>
         </state>
       </provider>

@@ -69,8 +69,10 @@ public class MemControllerRW {
             case "Read":
                 break;
             case "Write":
+                //TODO: the suff that a write does
                 break;
             case "Terminate":
+                //TODO redistribute all the frames
                 break;
         }
     }
@@ -126,10 +128,17 @@ public class MemControllerRW {
 
                 break;
             case 3:
+                List<PageTableEntry> leastUsed = new LinkedList<>();
+                for(PageTable pageTable : pageTableList){
+                    List temp = new LinkedList();
+                    if(pageTable.pageTableEntryList().stream().filter(pte-> pte.isPresent()).collect(Collectors.toList()).size() == 4)
+                        temp = pageTable.pageTableEntryList().stream().filter(pte-> pte.isPresent()).sorted(Comparator.comparingInt(PageTableEntry::getLastAccess)).collect(Collectors.toList()).subList(0,2);
+                    leastUsed.addAll(temp);
+                }
+                //TODO: Same as above but for more processes.
                 break;
         }
     }
-
 
 
     public int getClock() {
