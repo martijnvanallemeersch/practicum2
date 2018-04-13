@@ -3,6 +3,11 @@ package gui;
 import logic.Logic;
 
 import javax.swing.*;
+import javax.swing.event.TreeModelListener;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeModel;
+import javax.swing.tree.TreePath;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
@@ -26,6 +31,7 @@ public class GUI extends JDialog {
     private JTextField textFieldTotalWrites;
     private JList listPTE;
     private JList listRAM;
+    private JTree treePageTableList;
     private JTable tableRam;
 
 
@@ -70,6 +76,10 @@ public class GUI extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+
+        DefaultMutableTreeNode root = new DefaultMutableTreeNode("PageTables");
+        DefaultTreeModel model = (DefaultTreeModel)treePageTableList.getModel();
+        model.reload(root);
     }
 
 
@@ -93,7 +103,7 @@ public class GUI extends JDialog {
 
 
     public void updateFields() {
-        this.textFieldClock.setText(logic.getMemoryController().getClock() +"");
+        this.textFieldClock.setText(logic.getMemoryController().getClock() + "");
         //this.textFieldRAMWrites.setText(logic.getMemoryController().getToRAMWrites() + "");
         //this.textFieldHDDWRites.setText(logic.getMemoryController().getToHDDWrites() + "");
         //this.textFieldTotalWrites.setText(logic.getMemoryController().getTotalWrites() + "");
@@ -110,10 +120,26 @@ public class GUI extends JDialog {
         else this.textFieldFrame.setText("");
 */
 
-        this.listPTE.setListData(logic.getMemoryController().getPageTableList().get(0).pageTableEntryList().toArray()  );
-        this.listRAM.setListData(logic.getMemoryController().getRamEntries());
-    }
+        DefaultMutableTreeNode root = new DefaultMutableTreeNode("PageTables");
+        logic.getMemoryController().getPageTableList().forEach(pt -> {
+            DefaultMutableTreeNode process = new DefaultMutableTreeNode("Procecss: " + pt.getPid());
+            pt.pageTableEntryList().forEach(pte -> {
+                DefaultMutableTreeNode pteNode = new DefaultMutableTreeNode(pte);
+                process.add(pteNode);
+            });
+            root.add(process);
+        });
+        //this.treePageTableList = new JTree(root);
+        this.treePageTableList.setModel(new DefaultTreeModel(root));
+        DefaultTreeModel model = (DefaultTreeModel) treePageTableList.getModel();
+        model.reload(root);
 
+
+        //this.listPTE.setListData(logic.getMemoryController().getPageTableList().get(0).pageTableEntryList().toArray()  );
+        this.listRAM.setListData(logic.getMemoryController().getRamEntries());
+
+
+    }
 
 
     private void onCancel() {

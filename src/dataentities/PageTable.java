@@ -10,6 +10,7 @@ public class PageTable {
     private int nToRam;
 
     public PageTable(int pid) {
+        this.pid = pid;
         this.pageTableEntryList = new LinkedList<>();
         for (int i = 0; i < 16; i++) {
             pageTableEntryList.add(new PageTableEntry(i, -1,false, false));

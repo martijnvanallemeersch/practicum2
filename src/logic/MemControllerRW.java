@@ -55,7 +55,6 @@ public class MemControllerRW {
         boolean canFetchNext = true;
         if (instructionList.size() != 0) currentInstruction = instructionList.remove(0);
         else canFetchNext = false;
-
         return canFetchNext;
     }
 
@@ -92,23 +91,43 @@ public class MemControllerRW {
                 break;
             case 1:
                 //Search the 6 frames with the lowest LRU and swap them out
-                List<PageTableEntry> leastused = pteInRam.stream().sorted(Comparator.comparingInt(PageTableEntry::getLastAccess)).collect(Collectors.toList()).subList(0,5);
+                List<PageTableEntry> leastused = pteInRam.stream().sorted(Comparator.comparingInt(PageTableEntry::getLastAccess)).collect(Collectors.toList()).subList(0,6);
 
                 pteInRam.remove(leastused);
                 for (int i = 0; i < leastused.size(); i++) {
                     int frameNumber = leastused.get(i).getFrameNumber();
+
                     ramEntries[frameNumber] = new RAMEntry(frameNumber,pt.getPid(),pt.pageTableEntryList().get(i).getPageNumber());
                     pteInRam.add(pt.pageTableEntryList().get(i));
 
                     //set the pte to the ram
                     pt.moveEntryToRAM(i,frameNumber,clock);
-
                     pageTableList.get(0).moveEntryToHDD(leastused.get(i).getPageNumber());
                 }
-
                 processAmountInRAM++;
                 break;
             case 2:
+                List<PageTableEntry> leastUsed = new LinkedList<>();
+                for(PageTable pageTable : pageTableList){
+                    List temp = new LinkedList();
+                    if(pageTable.pageTableEntryList().stream().filter(pte-> pte.isPresent()).collect(Collectors.toList()).size() == 6)
+                        temp = pageTable.pageTableEntryList().stream().filter(pte-> pte.isPresent()).sorted(Comparator.comparingInt(PageTableEntry::getLastAccess)).collect(Collectors.toList()).subList(0,2);
+                    leastUsed.addAll(temp);
+                }
+                leastUsed.forEach(lu-> System.out.println(lu));
+
+                for (int i = 0; i < pageTableList.size()-1; i++) {
+                    for (int j = 0; j < 2; j++) {
+                        int pageNumber =  leastUsed.get(i+j).getPageNumber();
+                        int frameNumber = leastUsed.get(i+j).getFrameNumber();
+                        PageTable currentPT = pageTableList.get(i);
+                        currentPT.moveEntryToHDD(pageNumber);
+                        pt.moveEntryToRAM(i,pageNumber, clock);
+                        System.out.println(i + " " + j);
+                        ramEntries[frameNumber] = new RAMEntry(frameNumber,pt.getPid(),pt.pageTableEntryList().get(i+j).getPageNumber());
+                    }
+                }
+
                 break;
             case 3:
                 break;
