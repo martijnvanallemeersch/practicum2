@@ -8,6 +8,8 @@ public class RAMEntry {
 	
 	public RAMEntry(int frameNr) {
 		this.frameNr = frameNr;
+		this.pageNr = -1;
+		this.pid = -1;
 	}
 	
 	public RAMEntry(int frameNr, int pid, int pageNr) {
