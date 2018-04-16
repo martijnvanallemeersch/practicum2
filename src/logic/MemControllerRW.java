@@ -71,8 +71,11 @@ public class MemControllerRW {
                 processAmountInRAM++;
                 break;
             case "Read":
+                splitAdres(currentInstruction.getAddress());
+                
                 break;
             case "Write":
+                splitAdres(currentInstruction.getAddress());
                 //TODO: the suff that a write does
                 break;
             case "Terminate":
