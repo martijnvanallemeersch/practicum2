@@ -3,11 +3,8 @@ package gui;
 import logic.Logic;
 
 import javax.swing.*;
-import javax.swing.event.TreeModelListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.TreeModel;
-import javax.swing.tree.TreePath;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
@@ -29,10 +26,8 @@ public class GUI extends JDialog {
     private JTextField textFieldRAMWrites;
     private JTextField textFieldHDDWRites;
     private JTextField textFieldTotalWrites;
-    private JList listPTE;
     private JList listRAM;
     private JTree treePageTableList;
-    private JTable tableRam;
 
 
     public GUI() {
@@ -77,8 +72,10 @@ public class GUI extends JDialog {
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
 
+        //set the tree to empty on startup
         DefaultMutableTreeNode root = new DefaultMutableTreeNode("PageTables");
-        DefaultTreeModel model = (DefaultTreeModel)treePageTableList.getModel();
+        this.treePageTableList.setModel(new DefaultTreeModel(root));
+        DefaultTreeModel model = (DefaultTreeModel) treePageTableList.getModel();
         model.reload(root);
     }
 
@@ -103,23 +100,23 @@ public class GUI extends JDialog {
 
 
     public void updateFields() {
+        //Set memory-controller data
         this.textFieldClock.setText(logic.getMemoryController().getClock() + "");
-        //this.textFieldRAMWrites.setText(logic.getMemoryController().getToRAMWrites() + "");
-        //this.textFieldHDDWRites.setText(logic.getMemoryController().getToHDDWrites() + "");
-        //this.textFieldTotalWrites.setText(logic.getMemoryController().getTotalWrites() + "");
+        this.textFieldRAMWrites.setText(logic.getMemoryController().getToRAMWrites() + "");
+        this.textFieldHDDWRites.setText(logic.getMemoryController().getToHDDWrites() + "");
+        this.textFieldTotalWrites.setText(logic.getMemoryController().getTotalWrites() + "");
 
+        //Set current instruction data
         this.textFieldInstruction.setText(logic.getMemoryController().getCurrentInstruction().getOperation() + " PID:" + logic.getMemoryController().getCurrentInstruction().getPid());
         this.textFieldAdress.setText(logic.getMemoryController().getCurrentInstruction().getAddress() + "");
-
-        /*if (logic.getMemoryController().getSplittedAddress() != null)
+        if (logic.getMemoryController().getSplittedAddress() != null &&logic.getMemoryController().getCurrentInstruction().getOperation().equals("Write") ) {
             this.textFieldFrame.setText(logic.getMemoryController().getSplittedAddress()[0] + "");
-        else this.textFieldFrame.setText("");
-
-        if (logic.getMemoryController().getSplittedAddress() != null)
             this.textFieldOffset.setText(logic.getMemoryController().getSplittedAddress()[1] + "");
-        else this.textFieldFrame.setText("");
-*/
+        }
+        else this.textFieldFrame.setText("N/A");
 
+
+        //Create a tree from the PTEList
         DefaultMutableTreeNode root = new DefaultMutableTreeNode("PageTables");
         logic.getMemoryController().getPageTableList().forEach(pt -> {
             DefaultMutableTreeNode process = new DefaultMutableTreeNode("Procecss: " + pt.getPid());
@@ -129,13 +126,12 @@ public class GUI extends JDialog {
             });
             root.add(process);
         });
-        //this.treePageTableList = new JTree(root);
+
+        //Set the tree
         this.treePageTableList.setModel(new DefaultTreeModel(root));
         DefaultTreeModel model = (DefaultTreeModel) treePageTableList.getModel();
         model.reload(root);
 
-
-        //this.listPTE.setListData(logic.getMemoryController().getPageTableList().get(0).pageTableEntryList().toArray()  );
         this.listRAM.setListData(logic.getMemoryController().getRamEntries());
 
 
