@@ -72,11 +72,16 @@ public class MemControllerRW {
                 break;
             case "Read":
                 splitAdres(currentInstruction.getAddress());
-                
+
                 break;
             case "Write":
                 splitAdres(currentInstruction.getAddress());
-                //TODO: the suff that a write does
+                PageTable pageTable = this.getPageTableList().stream().filter(cpt -> cpt.getPid()== currentInstruction.getPid()).findFirst().get();
+                if(pageTable.getpageTableEntry(splittedAddress[0]).isPresent()){
+
+                } else {
+                    //TODO Swap the frame.
+                }
                 break;
             case "Terminate":
                 processAmountInRAM--;
