@@ -25,7 +25,7 @@ public class GUI extends JDialog {
     private JPanel Data;
     private JTextField textFieldRAMWrites;
     private JTextField textFieldHDDWRites;
-    private JTextField textFieldTotalWrites;
+    private JTextField textFieldTotalWriteInstructions;
     private JList listRAM;
     private JTree treePageTableList;
 
@@ -104,7 +104,7 @@ public class GUI extends JDialog {
         this.textFieldClock.setText(logic.getMemoryController().getClock() + "");
         this.textFieldRAMWrites.setText(logic.getMemoryController().getToRAMWrites() + "");
         this.textFieldHDDWRites.setText(logic.getMemoryController().getToHDDWrites() + "");
-        this.textFieldTotalWrites.setText(logic.getMemoryController().getTotalWrites() + "");
+        this.textFieldTotalWriteInstructions.setText(logic.getMemoryController().getTotalWriteInstructions() + "");
 
         //Set current instruction data
         this.textFieldInstruction.setText(logic.getMemoryController().getCurrentInstruction().getOperation() + " PID:" + logic.getMemoryController().getCurrentInstruction().getPid());

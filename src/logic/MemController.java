@@ -71,7 +71,7 @@ public class MemController {
                 break;
             case "Write":
                 process = jobMapInRAM.get(currentInstruction.getPid()); //getting process process
-                splittedAddress = calculateAddress(currentInstruction.getAddress()); //calculating address for pagetable entry
+                //splittedAddress = calculateAddress(currentInstruction.getAddress()); //calculating address for pagetable entry
                 pte = process.getPtEntry(splittedAddress[0]); //getting pagetable entry of that process
                 if (!pte.isPresent()) {
                     //use LRU to remove frame from this process and replace with this frame
@@ -292,7 +292,7 @@ public class MemController {
 
     }
 
-    public int[] calculateAddress(int address) {
+    /*public int[] calculateAddress(int address) {
         //split the bits: last 12 =  offset within page
         String paddedBinary = String.format("%16s", Integer.toBinaryString(address)).replace(' ', '0');
 
@@ -303,7 +303,7 @@ public class MemController {
         int offset = Integer.parseInt(offsetBin, 2);
         int[] splitted = new int[]{pageNr, offset};
         return splitted;
-    }
+    }*/
 
 
     public void addGUIListener(GUI gui) {

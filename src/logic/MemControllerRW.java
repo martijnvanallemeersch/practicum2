@@ -21,17 +21,17 @@ public class MemControllerRW {
     private int toRAMWrites;
     private int toHDDWrites;
 
+    private int totalWriteInstruction;
+
     private int processAmountInRAM;
     int[] splittedAddress;
     private GUI gui;
 
 
-    // GETTERS and SETTERS
-    public void setGui(GUI gui) {
-        this.gui = gui;
-    }
-
-    //CONSTRUCTOR
+    /**
+     * A nonstandard constructor that accepts the list of instructions
+     * @param instructionList the list of instructions
+     */
     public MemControllerRW(List<Instruction> instructionList) {
         this.instructionList = instructionList;
         this.pageTableList = new LinkedList<>();
@@ -40,8 +40,13 @@ public class MemControllerRW {
 
         this.clock = 0;
         this.processAmountInRAM = 0;
+        this.totalWriteInstruction = 0;
     }
 
+    /**
+     * Executes one instruction if there are in the list
+     * @return boolean that returns false if there are no instructions left
+     */
     public boolean executeOne() {
         boolean canExecute = true;
 
@@ -54,6 +59,10 @@ public class MemControllerRW {
         return canExecute;
     }
 
+    /**
+     * Fetches the next instruction that needs to be executed
+     * @return boolean that returns false if there are no more instructions
+     */
     private boolean fetchNextInstruction() {
         boolean canFetchNext = true;
         if (instructionList.size() != 0) currentInstruction = instructionList.remove(0);
@@ -62,7 +71,12 @@ public class MemControllerRW {
     }
 
 
+    /**
+     * Decodes the current instruction according its operation
+     */
     private void decodeCurrentInstruction() {
+        PageTable pageTable = this.getPageTableList().stream().filter(cpt -> cpt.getPid() == currentInstruction.getPid()).findFirst().get();
+
         switch (currentInstruction.getOperation()) {
             case "Start":
                 PageTable pt = new PageTable(currentInstruction.getPid());
@@ -72,13 +86,15 @@ public class MemControllerRW {
                 break;
             case "Read":
                 splitAdres(currentInstruction.getAddress());
+                pageTable.getpageTableEntry(splittedAddress[0]).setLastAccess(clock);
 
                 break;
             case "Write":
+                totalWriteInstruction++;
                 splitAdres(currentInstruction.getAddress());
-                PageTable pageTable = this.getPageTableList().stream().filter(cpt -> cpt.getPid()== currentInstruction.getPid()).findFirst().get();
-                if(pageTable.getpageTableEntry(splittedAddress[0]).isPresent()){
-
+                if (pageTable.getpageTableEntry(splittedAddress[0]).isPresent()) {
+                    pageTable.getpageTableEntry(splittedAddress[0]).setLastAccess(clock);
+                    pageTable.getpageTableEntry(splittedAddress[0]).setModified(true);
                 } else {
                     //TODO Swap the frame.
                 }
@@ -86,11 +102,14 @@ public class MemControllerRW {
             case "Terminate":
                 processAmountInRAM--;
                 redistributeFrames();
-                //TODO redistribute all the frames
                 break;
         }
     }
 
+    /**
+     * Creates a new page table and assigns frames to the new process depending on the amount of processes in the ram
+     * @param pt the new, unchanged, pageTable
+     */
     private void assignFramesInRam(PageTable pt) {
         switch (processAmountInRAM) {
             case 0:
@@ -115,6 +134,7 @@ public class MemControllerRW {
                 pteInRam.remove(leastused);
                 for (int i = 0; i < leastused.size(); i++) {
                     toRAMWrites++;
+                    toHDDWrites++;
                     int frameNumber = leastused.get(i).getFrameNumber();
 
                     ramEntries[frameNumber] = new RAMEntry(frameNumber, pt.getPid(), pt.pageTableEntryList().get(i).getPageNumber());
@@ -138,6 +158,7 @@ public class MemControllerRW {
                 pteInRam.remove(leastUsed);
                 for (int i = 0; i < leastUsed.size(); i++) {
                     toRAMWrites++;
+                    toHDDWrites++;
                     int pageNumber = leastUsed.get(i).getPageNumber();
                     int frameNumber = leastUsed.get(i).getFrameNumber();
                     PageTable currentPT = pageTableList.get(i / 2);
@@ -161,6 +182,7 @@ public class MemControllerRW {
                 pteInRam.remove(leastUsed1);
                 for (int i = 0; i < leastUsed1.size(); i++) {
                     toRAMWrites++;
+                    toHDDWrites++;
                     int pageNumber = leastUsed1.get(i).getPageNumber();
                     int frameNumber = leastUsed1.get(i).getFrameNumber();
                     PageTable currentPT = pageTableList.get(i);
@@ -174,6 +196,9 @@ public class MemControllerRW {
         }
     }
 
+    /**
+     * redistributes the frames among the resting process in RAM when a process is terminated
+     */
     private void redistributeFrames() {
         int processIdToRemove = currentInstruction.getPid();
         System.out.println();
@@ -181,11 +206,8 @@ public class MemControllerRW {
         pageTableList.remove(pageTableToRemove);
         List<PageTableEntry> pteToRemove = pageTableToRemove.pageTableEntryList().stream().filter(pte -> pte.isPresent()).collect(Collectors.toList());
 
-
         pteToRemove.forEach(p -> System.out.println(p));
 
-
-        //
         if (processAmountInRAM == 0) {
             for (int i = 0; i < ramEntries.length; i++) {
                 ramEntries[i] = new RAMEntry(i);
@@ -221,11 +243,13 @@ public class MemControllerRW {
         for (int i = 0; i < pageTableToRemove.pageTableEntryList().size(); i++) {
             pageTableToRemove.moveEntryToHDD(i);
         }
-
-
     }
 
-    private int[] splitAdres(int address) {
+    /**
+     * Splits the addres into a page number and an offset and sets the global parameter
+     * @param address the address that needs to be splitted
+     */
+    private void splitAdres(int address) {
         //split the bits: last 12 =  offset within page
         String paddedBinary = String.format("%16s", Integer.toBinaryString(address)).replace(' ', '0');
 
@@ -234,11 +258,15 @@ public class MemControllerRW {
         //convert back to ints
         int pageNr = Integer.parseInt(pageNrBin, 2);
         int offset = Integer.parseInt(offsetBin, 2);
-        int[] splitted = new int[]{pageNr, offset};
-        return splitted;
+        this.splittedAddress = new int[]{pageNr, offset};
     }
 
+    //SETTERS
+    public void setGui(GUI gui) {
+        this.gui = gui;
+    }
 
+    //Getters
     public int getClock() {
         return clock;
     }
@@ -263,11 +291,9 @@ public class MemControllerRW {
         return toHDDWrites;
     }
 
-    public int getTotalWrites() {
-        return toHDDWrites + toRAMWrites;
-    }
-
     public int[] getSplittedAddress() {
         return splittedAddress;
     }
+
+    public int getTotalWriteInstructions() { return this.totalWriteInstruction;}
 }
