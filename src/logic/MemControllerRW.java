@@ -75,7 +75,7 @@ public class MemControllerRW {
      * Decodes the current instruction according its operation
      */
     private void decodeCurrentInstruction() {
-        PageTable pageTable = this.getPageTableList().stream().filter(cpt -> cpt.getPid() == currentInstruction.getPid()).findFirst().get();
+        PageTable pageTable = this.getPageTableList().stream().filter(cpt -> cpt.getPid() == currentInstruction.getPid()).findFirst().orElse(null);
 
         switch (currentInstruction.getOperation()) {
             case "Start":
@@ -181,19 +181,36 @@ public class MemControllerRW {
 
                 pteInRam.remove(leastUsed1);
                 for (int i = 0; i < leastUsed1.size(); i++) {
-                    toRAMWrites++;
-                    toHDDWrites++;
-                    int pageNumber = leastUsed1.get(i).getPageNumber();
-                    int frameNumber = leastUsed1.get(i).getFrameNumber();
-                    PageTable currentPT = pageTableList.get(i);
-                    currentPT.moveEntryToHDD(pageNumber);
-                    pt.moveEntryToRAM(i, pageNumber, clock);
-                    pteInRam.add(pt.getpageTableEntry(i));
-                    ramEntries[frameNumber] = new RAMEntry(frameNumber, pt.getPid(), pt.pageTableEntryList().get(i).getPageNumber());
+                    int frameNumberOld = leastUsed1.get(i).getFrameNumber();
+                    moveLeastUsedToHDD(pageTableList.get(i), leastUsed1.get(i));
+                    moveNewToRAM(pt,pt.getpageTableEntry(i), frameNumberOld);
                 }
-                //TODO: Same as above but for more processes.
                 break;
         }
+    }
+
+    /**
+     *
+     * @param pt Page table of leased used pte
+     * @param pte the pte of the leased used
+     */
+    private void moveLeastUsedToHDD(PageTable pt, PageTableEntry pte) {
+        toHDDWrites++;
+        pt.moveEntryToHDD(pte.getPageNumber());
+        pteInRam.remove(pte);
+    }
+
+    /**
+     *
+     * @param pt New pt
+     * @param pte new pte from pt
+     * @param frameNumber framenumber of old pte
+     */
+    private void moveNewToRAM(PageTable pt, PageTableEntry pte, int frameNumber) {
+        toRAMWrites++;
+        pteInRam.add(pte);
+        pt.moveEntryToRAM(pte.getPageNumber(),frameNumber,clock);
+        ramEntries[frameNumber] = new RAMEntry(frameNumber, pt.getPid(), pte.getPageNumber());
     }
 
     /**
