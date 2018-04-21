@@ -20,8 +20,8 @@
       <file leaf-file-name="MemControllerRW.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/logic/MemControllerRW.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="731">
-              <caret line="133" column="77" lean-forward="true" selection-start-line="133" selection-start-column="77" selection-end-line="133" selection-end-column="77" />
+            <state relative-caret-position="1359">
+              <caret line="134" column="19" lean-forward="true" selection-start-line="134" selection-start-column="19" selection-end-line="134" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -32,7 +32,7 @@
       <file leaf-file-name="MemController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/logic/MemController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-697">
+            <state relative-caret-position="1470">
               <caret line="77" column="41" lean-forward="false" selection-start-line="77" selection-start-column="20" selection-end-line="77" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -68,16 +68,11 @@
       <file leaf-file-name="GUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/GUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2079">
+            <state relative-caret-position="1785">
               <caret line="106" column="45" lean-forward="false" selection-start-line="106" selection-start-column="45" selection-end-line="106" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <marker date="1524245211925" expanded="true" signature="3683:5260" ph="{...}" />
-                <marker date="1524245211925" expanded="true" signature="4635:4967" ph="{...}" />
-                <marker date="1524245211925" expanded="true" signature="4789:4924" ph="{...}" />
-                <marker date="1524245211925" expanded="true" signature="5291:5360" ph="{...}" />
-                <marker date="1524245211925" expanded="true" signature="5406:5986" ph="{...}" />
-                <marker date="1524245211925" expanded="true" signature="6027:6034" ph="{}" />
               </folding>
             </state>
           </provider>
@@ -146,6 +141,8 @@
       <find>system</find>
       <find>totalW</find>
       <find>system.out</find>
+      <find>++</find>
+      <find>toRAMWrites++</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -208,10 +205,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="AndroidView" />
       <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -353,11 +350,12 @@
       <workItem from="1523863569054" duration="528000" />
       <workItem from="1524200933580" duration="2829000" />
       <workItem from="1524298007706" duration="3492000" />
+      <workItem from="1524318127229" duration="1396000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93228000" />
+    <option name="totallyTimeSpent" value="94624000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="3858" height="2140" extended-state="6" />
@@ -371,19 +369,19 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14381443" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14381443" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11792702" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.118720256" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3992891" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3992891" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -455,11 +453,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <marker date="1524245211925" expanded="true" signature="3683:5260" ph="{...}" />
-            <marker date="1524245211925" expanded="true" signature="4635:4967" ph="{...}" />
-            <marker date="1524245211925" expanded="true" signature="4789:4924" ph="{...}" />
-            <marker date="1524245211925" expanded="true" signature="5291:5360" ph="{...}" />
-            <marker date="1524245211925" expanded="true" signature="5406:5986" ph="{...}" />
-            <marker date="1524245211925" expanded="true" signature="6027:6034" ph="{}" />
           </folding>
         </state>
       </provider>
@@ -502,11 +495,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <marker date="1524245211925" expanded="true" signature="3683:5260" ph="{...}" />
-            <marker date="1524245211925" expanded="true" signature="4635:4967" ph="{...}" />
-            <marker date="1524245211925" expanded="true" signature="4789:4924" ph="{...}" />
-            <marker date="1524245211925" expanded="true" signature="5291:5360" ph="{...}" />
-            <marker date="1524245211925" expanded="true" signature="5406:5986" ph="{...}" />
-            <marker date="1524245211925" expanded="true" signature="6027:6034" ph="{}" />
           </folding>
         </state>
       </provider>
@@ -549,11 +537,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <marker date="1524245211925" expanded="true" signature="3683:5260" ph="{...}" />
-            <marker date="1524245211925" expanded="true" signature="4635:4967" ph="{...}" />
-            <marker date="1524245211925" expanded="true" signature="4789:4924" ph="{...}" />
-            <marker date="1524245211925" expanded="true" signature="5291:5360" ph="{...}" />
-            <marker date="1524245211925" expanded="true" signature="5406:5986" ph="{...}" />
-            <marker date="1524245211925" expanded="true" signature="6027:6034" ph="{}" />
           </folding>
         </state>
       </provider>
@@ -596,11 +579,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <marker date="1524245211925" expanded="true" signature="3683:5260" ph="{...}" />
-            <marker date="1524245211925" expanded="true" signature="4635:4967" ph="{...}" />
-            <marker date="1524245211925" expanded="true" signature="4789:4924" ph="{...}" />
-            <marker date="1524245211925" expanded="true" signature="5291:5360" ph="{...}" />
-            <marker date="1524245211925" expanded="true" signature="5406:5986" ph="{...}" />
-            <marker date="1524245211925" expanded="true" signature="6027:6034" ph="{}" />
           </folding>
         </state>
       </provider>
@@ -647,11 +625,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <marker date="1524245211925" expanded="true" signature="3683:5260" ph="{...}" />
-            <marker date="1524245211925" expanded="true" signature="4635:4967" ph="{...}" />
-            <marker date="1524245211925" expanded="true" signature="4789:4924" ph="{...}" />
-            <marker date="1524245211925" expanded="true" signature="5291:5360" ph="{...}" />
-            <marker date="1524245211925" expanded="true" signature="5406:5986" ph="{...}" />
-            <marker date="1524245211925" expanded="true" signature="6027:6034" ph="{}" />
           </folding>
         </state>
       </provider>
@@ -744,23 +717,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2079">
+        <state relative-caret-position="1785">
           <caret line="106" column="45" lean-forward="false" selection-start-line="106" selection-start-column="45" selection-end-line="106" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
             <marker date="1524245211925" expanded="true" signature="3683:5260" ph="{...}" />
-            <marker date="1524245211925" expanded="true" signature="4635:4967" ph="{...}" />
-            <marker date="1524245211925" expanded="true" signature="4789:4924" ph="{...}" />
-            <marker date="1524245211925" expanded="true" signature="5291:5360" ph="{...}" />
-            <marker date="1524245211925" expanded="true" signature="5406:5986" ph="{...}" />
-            <marker date="1524245211925" expanded="true" signature="6027:6034" ph="{}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/logic/MemController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-697">
+        <state relative-caret-position="1470">
           <caret line="77" column="41" lean-forward="false" selection-start-line="77" selection-start-column="20" selection-end-line="77" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -770,8 +738,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/logic/MemControllerRW.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="133" column="77" lean-forward="true" selection-start-line="133" selection-start-column="77" selection-end-line="133" selection-end-column="77" />
+        <state relative-caret-position="1359">
+          <caret line="134" column="19" lean-forward="true" selection-start-line="134" selection-start-column="19" selection-end-line="134" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

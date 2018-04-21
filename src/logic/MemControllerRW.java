@@ -88,14 +88,23 @@ public class MemControllerRW {
                 splitAdres(currentInstruction.getAddress());
                 pageTable.getpageTableEntry(splittedAddress[0]).setLastAccess(clock);
 
+
                 break;
             case "Write":
                 totalWriteInstruction++;
                 splitAdres(currentInstruction.getAddress());
                 if (!pageTable.getpageTableEntry(splittedAddress[0]).isPresent()) {
-                    pageTable.getpageTableEntry(splittedAddress[0]).setLastAccess(clock);
-                    pageTable.getpageTableEntry(splittedAddress[0]).setModified(true);
+
+                    PageTableEntry leastUsed = pageTable.pageTableEntryList().stream().filter(pte-> pte.isPresent()).sorted(Comparator.comparingInt(PageTableEntry::getLastAccess)).findFirst().get();
+
+                    pageTable.moveEntryToRAM(splittedAddress[0], leastUsed.getFrameNumber(),clock);
+                    int frameNumber = leastUsed.getFrameNumber();
+                    moveLeastUsedToHDD(pageTable, leastUsed );
+                    moveNewToRAM(pageTable,pageTable.getpageTableEntry(splittedAddress[0]), frameNumber);
+
                 }
+                pageTable.getpageTableEntry(splittedAddress[0]).setLastAccess(clock);
+                pageTable.getpageTableEntry(splittedAddress[0]).setModified(true);
                 break;
             case "Terminate":
                 processAmountInRAM--;
@@ -211,6 +220,7 @@ public class MemControllerRW {
         } else {
             for (int i = 0; i < pteToRemove.size(); i++) {
                 toHDDWrites++;
+                toRAMWrites++;
                 int pteToRemoveFrameNumber = pteToRemove.get(i).getFrameNumber();
 
                 int modifier = i;
