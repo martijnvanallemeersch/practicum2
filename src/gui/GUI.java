@@ -109,7 +109,10 @@ public class GUI extends JDialog {
         //Set current instruction data
         this.textFieldInstruction.setText(logic.getMemoryController().getCurrentInstruction().getOperation() + " PID:" + logic.getMemoryController().getCurrentInstruction().getPid());
         this.textFieldAdress.setText(logic.getMemoryController().getCurrentInstruction().getAddress() + "");
-        if (logic.getMemoryController().getSplittedAddress() != null &&logic.getMemoryController().getCurrentInstruction().getOperation().equals("Write") ) {
+
+        if (logic.getMemoryController().getSplittedAddress() != null &&
+                (logic.getMemoryController().getCurrentInstruction().getOperation().equals("Write")||
+                        logic.getMemoryController().getCurrentInstruction().getOperation().equals("Read"))) {
             this.textFieldFrame.setText(logic.getMemoryController().getSplittedAddress()[0] + "");
             this.textFieldOffset.setText(logic.getMemoryController().getSplittedAddress()[1] + "");
         }

@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a83619c-1a89-4e1d-9ce2-beec4b5c25db" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/logic/MemController.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/practicum-2-Virtual-Memory/logic/MemControllerRW.class" afterPath="$PROJECT_DIR$/out/production/practicum-2-Virtual-Memory/logic/MemControllerRW.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/GUI.java" afterPath="$PROJECT_DIR$/src/gui/GUI.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logic/MemControllerRW.java" afterPath="$PROJECT_DIR$/src/logic/MemControllerRW.java" />
     </list>
@@ -21,20 +24,8 @@
       <file leaf-file-name="MemControllerRW.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/logic/MemControllerRW.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1235">
-              <caret line="104" column="9" lean-forward="false" selection-start-line="104" selection-start-column="9" selection-end-line="104" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MemController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/logic/MemController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2613">
-              <caret line="321" column="26" lean-forward="false" selection-start-line="321" selection-start-column="15" selection-end-line="321" selection-end-column="26" />
+            <state relative-caret-position="273">
+              <caret line="15" column="72" lean-forward="false" selection-start-line="15" selection-start-column="65" selection-end-line="15" selection-end-column="72" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -69,11 +60,11 @@
       <file leaf-file-name="GUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/GUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1567">
-              <caret line="117" column="32" lean-forward="false" selection-start-line="117" selection-start-column="32" selection-end-line="117" selection-end-column="32" />
+            <state relative-caret-position="1596">
+              <caret line="102" column="21" lean-forward="false" selection-start-line="102" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1524320312779" expanded="true" signature="3683:5334" ph="{...}" />
+                <marker date="1524329068473" expanded="true" signature="3683:5461" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -355,12 +346,12 @@
       <workItem from="1524200933580" duration="2829000" />
       <workItem from="1524298007706" duration="3492000" />
       <workItem from="1524318127229" duration="1396000" />
-      <workItem from="1524320280025" duration="2746000" />
+      <workItem from="1524320280025" duration="4524000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="97370000" />
+    <option name="totallyTimeSpent" value="99148000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="3858" height="2140" extended-state="6" />
@@ -445,9 +436,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="441">
           <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -457,7 +446,7 @@
           <caret line="83" column="12" lean-forward="false" selection-start-line="83" selection-start-column="12" selection-end-line="83" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1524320312779" expanded="true" signature="3683:5334" ph="{...}" />
+            <marker date="1524329068473" expanded="true" signature="3683:5461" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -487,9 +476,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="441">
           <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -499,7 +486,7 @@
           <caret line="83" column="12" lean-forward="false" selection-start-line="83" selection-start-column="12" selection-end-line="83" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1524320312779" expanded="true" signature="3683:5334" ph="{...}" />
+            <marker date="1524329068473" expanded="true" signature="3683:5461" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -529,9 +516,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="441">
           <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -541,7 +526,7 @@
           <caret line="67" column="24" lean-forward="false" selection-start-line="67" selection-start-column="14" selection-end-line="67" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1524320312779" expanded="true" signature="3683:5334" ph="{...}" />
+            <marker date="1524329068473" expanded="true" signature="3683:5461" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -571,9 +556,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
           <caret line="27" column="16" lean-forward="false" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -583,7 +566,7 @@
           <caret line="32" column="16" lean-forward="false" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1524320312779" expanded="true" signature="3683:5334" ph="{...}" />
+            <marker date="1524329068473" expanded="true" signature="3683:5461" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -612,9 +595,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="22" column="35" lean-forward="false" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -629,7 +610,7 @@
           <caret line="34" column="13" lean-forward="true" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1524320312779" expanded="true" signature="3683:5334" ph="{...}" />
+            <marker date="1524329068473" expanded="true" signature="3683:5461" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -715,6 +696,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/logic/MemController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2613">
+          <caret line="321" column="26" lean-forward="false" selection-start-line="321" selection-start-column="15" selection-end-line="321" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/GUI.form">
       <provider selected="true" editor-type-id="ui-designer">
         <state />
@@ -722,29 +711,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1567">
-          <caret line="117" column="32" lean-forward="false" selection-start-line="117" selection-start-column="32" selection-end-line="117" selection-end-column="32" />
+        <state relative-caret-position="1596">
+          <caret line="102" column="21" lean-forward="false" selection-start-line="102" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1524320312779" expanded="true" signature="3683:5334" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/logic/MemController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2613">
-          <caret line="321" column="26" lean-forward="false" selection-start-line="321" selection-start-column="15" selection-end-line="321" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <marker date="1524329068473" expanded="true" signature="3683:5461" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/logic/MemControllerRW.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1235">
-          <caret line="104" column="9" lean-forward="false" selection-start-line="104" selection-start-column="9" selection-end-line="104" selection-end-column="9" />
+        <state relative-caret-position="273">
+          <caret line="15" column="72" lean-forward="false" selection-start-line="15" selection-start-column="65" selection-end-line="15" selection-end-column="72" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

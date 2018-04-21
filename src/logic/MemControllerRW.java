@@ -38,7 +38,7 @@ public class MemControllerRW {
         this.ramEntries = new RAMEntry[SystemVariables.RAMFRAMES];
         this.pteInRam = new LinkedList();
 
-        this.clock = 0;
+        this.clock = 1;
         this.processAmountInRAM = 0;
         this.totalWriteInstruction = 0;
     }
@@ -85,7 +85,6 @@ public class MemControllerRW {
         }
 
         if(currentInstruction.getOperation().equals("Write") || currentInstruction.getOperation().equals("Read")) {
-            totalWriteInstruction++;
             splitAdres(currentInstruction.getAddress());
             if (!pageTable.getpageTableEntry(splittedAddress[0]).isPresent()) {
                 PageTableEntry leastUsed = pageTable.pageTableEntryList().stream().filter(pte-> pte.isPresent()).sorted(Comparator.comparingInt(PageTableEntry::getLastAccess)).findFirst().get();
@@ -95,7 +94,11 @@ public class MemControllerRW {
                 moveNewToRAM(pageTable,pageTable.getpageTableEntry(splittedAddress[0]), frameNumber);
             }
 
-            if(currentInstruction.getOperation().equals("Write")) pageTable.getpageTableEntry(splittedAddress[0]).setModified(true);
+            if(currentInstruction.getOperation().equals("Write")){
+                totalWriteInstruction++;
+                pageTable.getpageTableEntry(splittedAddress[0]).setModified(true);
+
+            }
             pageTable.getpageTableEntry(splittedAddress[0]).setLastAccess(clock);
         }
 
