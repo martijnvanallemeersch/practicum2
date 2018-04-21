@@ -113,7 +113,11 @@ public class GUI extends JDialog {
             this.textFieldFrame.setText(logic.getMemoryController().getSplittedAddress()[0] + "");
             this.textFieldOffset.setText(logic.getMemoryController().getSplittedAddress()[1] + "");
         }
-        else this.textFieldFrame.setText("N/A");
+        else {
+            this.textFieldFrame.setText("N/A");
+            this.textFieldOffset.setText("N/A");
+
+        }
 
 
         //Create a tree from the PTEList

@@ -77,40 +77,33 @@ public class MemControllerRW {
     private void decodeCurrentInstruction() {
         PageTable pageTable = this.getPageTableList().stream().filter(cpt -> cpt.getPid() == currentInstruction.getPid()).findFirst().orElse(null);
 
-        switch (currentInstruction.getOperation()) {
-            case "Start":
-                PageTable pt = new PageTable(currentInstruction.getPid());
-                this.pageTableList.add(pt);
-                assignFramesInRam(pt);
-                processAmountInRAM++;
-                break;
-            case "Read":
-                splitAdres(currentInstruction.getAddress());
-                pageTable.getpageTableEntry(splittedAddress[0]).setLastAccess(clock);
-
-
-                break;
-            case "Write":
-                totalWriteInstruction++;
-                splitAdres(currentInstruction.getAddress());
-                if (!pageTable.getpageTableEntry(splittedAddress[0]).isPresent()) {
-
-                    PageTableEntry leastUsed = pageTable.pageTableEntryList().stream().filter(pte-> pte.isPresent()).sorted(Comparator.comparingInt(PageTableEntry::getLastAccess)).findFirst().get();
-
-                    pageTable.moveEntryToRAM(splittedAddress[0], leastUsed.getFrameNumber(),clock);
-                    int frameNumber = leastUsed.getFrameNumber();
-                    moveLeastUsedToHDD(pageTable, leastUsed );
-                    moveNewToRAM(pageTable,pageTable.getpageTableEntry(splittedAddress[0]), frameNumber);
-
-                }
-                pageTable.getpageTableEntry(splittedAddress[0]).setLastAccess(clock);
-                pageTable.getpageTableEntry(splittedAddress[0]).setModified(true);
-                break;
-            case "Terminate":
-                processAmountInRAM--;
-                redistributeFrames();
-                break;
+        if(currentInstruction.getOperation().equals("Start")) {
+            PageTable pt = new PageTable(currentInstruction.getPid());
+            this.pageTableList.add(pt);
+            assignFramesInRam(pt);
+            processAmountInRAM++;
         }
+
+        if(currentInstruction.getOperation().equals("Write") || currentInstruction.getOperation().equals("Read")) {
+            totalWriteInstruction++;
+            splitAdres(currentInstruction.getAddress());
+            if (!pageTable.getpageTableEntry(splittedAddress[0]).isPresent()) {
+                PageTableEntry leastUsed = pageTable.pageTableEntryList().stream().filter(pte-> pte.isPresent()).sorted(Comparator.comparingInt(PageTableEntry::getLastAccess)).findFirst().get();
+                pageTable.moveEntryToRAM(splittedAddress[0], leastUsed.getFrameNumber(),clock);
+                int frameNumber = leastUsed.getFrameNumber();
+                moveLeastUsedToHDD(pageTable, leastUsed );
+                moveNewToRAM(pageTable,pageTable.getpageTableEntry(splittedAddress[0]), frameNumber);
+            }
+
+            if(currentInstruction.getOperation().equals("Write")) pageTable.getpageTableEntry(splittedAddress[0]).setModified(true);
+            pageTable.getpageTableEntry(splittedAddress[0]).setLastAccess(clock);
+        }
+
+        if(currentInstruction.getOperation().equals("Terminate")) {
+            processAmountInRAM--;
+            redistributeFrames();
+        }
+
     }
 
     /**
@@ -219,8 +212,9 @@ public class MemControllerRW {
             }
         } else {
             for (int i = 0; i < pteToRemove.size(); i++) {
-                toHDDWrites++;
                 toRAMWrites++;
+
+
                 int pteToRemoveFrameNumber = pteToRemove.get(i).getFrameNumber();
 
                 int modifier = i;
