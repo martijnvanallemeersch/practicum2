@@ -175,7 +175,7 @@ public class MemControllerRW {
     }
 
     /**
-     *
+     * Moves the least used pte to the HDD
      * @param pt Page table of leased used pte
      * @param pte the pte of the leased used
      */
@@ -191,7 +191,7 @@ public class MemControllerRW {
     }
 
     /**
-     *
+     * moves the new pte to the RAM
      * @param pt New pt
      * @param pte new pte from pt
      * @param frameNumber framenumber of old pte
