@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a83619c-1a89-4e1d-9ce2-beec4b5c25db" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logic/MemControllerRW.java" afterPath="$PROJECT_DIR$/src/logic/MemControllerRW.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/dataentities/Process.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,27 +18,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="MemControllerRW.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MemControllerRW.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/logic/MemControllerRW.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4053">
-              <caret line="193" column="35" lean-forward="false" selection-start-line="193" selection-start-column="35" selection-end-line="193" selection-end-column="35" />
+            <state relative-caret-position="504">
+              <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Logic.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/logic/Logic.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="13" column="26" lean-forward="false" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="26" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#274#275#0" expanded="true" />
-                <element signature="e#313#314#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -83,21 +70,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SystemVariables.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SystemVariables.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/dataentities/SystemVariables.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
-              <caret line="3" column="31" lean-forward="false" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PageTableEntry.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/dataentities/PageTableEntry.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="609">
-              <caret line="39" column="27" lean-forward="false" selection-start-line="39" selection-start-column="16" selection-end-line="39" selection-end-column="27" />
+            <state relative-caret-position="105">
+              <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -161,7 +138,6 @@
         <option value="$PROJECT_DIR$/src/dataentities/MemControllerRW.java" />
         <option value="$PROJECT_DIR$/src/logic/Logic.java" />
         <option value="$PROJECT_DIR$/src/io/XMLReader.java" />
-        <option value="$PROJECT_DIR$/src/dataentities/Process.java" />
         <option value="$PROJECT_DIR$/src/dataentities/PageTableEntry.java" />
         <option value="$PROJECT_DIR$/src/dataentities/PageTable.java" />
         <option value="$PROJECT_DIR$/src/dataentities/RAMEntry.java" />
@@ -169,6 +145,7 @@
         <option value="$PROJECT_DIR$/src/gui/GUI.java" />
         <option value="$PROJECT_DIR$/src/gui/GUI.form" />
         <option value="$PROJECT_DIR$/src/logic/MemControllerRW.java" />
+        <option value="$PROJECT_DIR$/src/dataentities/Process.java" />
       </list>
     </option>
   </component>
@@ -223,6 +200,13 @@
               <item name="practicum2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="gui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="practicum2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="practicum2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="gui" type="462c0819:PsiDirectoryNode" />
+              <item name="GUI" type="e9f4de52:FormNode" />
             </path>
             <path>
               <item name="practicum2" type="b2602c69:ProjectViewProjectNode" />
@@ -350,12 +334,12 @@
       <workItem from="1524739296387" duration="612000" />
       <workItem from="1524743234064" duration="1970000" />
       <workItem from="1524746083401" duration="2492000" />
-      <workItem from="1524750102800" duration="3722000" />
+      <workItem from="1524750102800" duration="4655000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="109146000" />
+    <option name="totallyTimeSpent" value="110079000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="3858" height="2140" extended-state="6" />
@@ -434,20 +418,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/logic/Ram.java" />
-    <entry file="file://$PROJECT_DIR$/src/dataentities/Operations.java" />
-    <entry file="file://$PROJECT_DIR$/src/logic/MemController.java" />
-    <entry file="file://$PROJECT_DIR$/src/gui/GUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1743">
-          <caret line="83" column="12" lean-forward="false" selection-start-line="83" selection-start-column="12" selection-end-line="83" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1524751640636" expanded="true" signature="3887:5746" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/io/XMLReader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
@@ -604,13 +574,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/dataentities/Operations.java" />
-    <entry file="file://$PROJECT_DIR$/src/dataentities/Process.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="33" column="20" lean-forward="false" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/logic/MemController.java" />
     <entry file="file://$PROJECT_DIR$/src/logic/Logic.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -640,14 +603,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dataentities/SystemVariables.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="31" lean-forward="false" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/dataentities/PageTable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="798">
@@ -655,14 +610,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dataentities/PageTableEntry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
-          <caret line="39" column="27" lean-forward="false" selection-start-line="39" selection-start-column="16" selection-end-line="39" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -684,11 +631,118 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/logic/MemControllerRW.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4053">
-          <caret line="193" column="35" lean-forward="false" selection-start-line="193" selection-start-column="35" selection-end-line="193" selection-end-column="35" />
+        <state relative-caret-position="504">
+          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dataentities/Process.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="672">
+          <caret line="33" column="20" lean-forward="false" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/dataentities.PageTableEntry">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>dataentities.PageTableEntry</OriginalElement>
+          <nodes>
+            <node x="0.0" y="0.0">dataentities.PageTableEntry</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="-1338.5" y="-541.0" />
+          <SelectedNodes>
+            <node>dataentities.PageTableEntry</node>
+          </SelectedNodes>
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/io.XMLReader">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>io.XMLReader</OriginalElement>
+          <nodes>
+            <node x="" y="">dataentities.PageTableEntry</node>
+            <node x="" y="">logic.MemControllerRW</node>
+            <node x="" y="">dataentities.PageTable</node>
+            <node x="" y="">dataentities.Instruction</node>
+            <node x="" y="">dataentities.RAMEntry</node>
+            <node x="" y="">logic.Logic</node>
+            <node x="" y="">dataentities.SystemVariables</node>
+            <node x="" y="">io.XMLReader</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="173.0" y="180.0" />
+          <SelectedNodes />
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dataentities/PageTableEntry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="945">
+          <caret line="63" column="5" lean-forward="true" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
+          <folding>
+            <element signature="e#895#896#0" expanded="true" />
+            <element signature="e#935#936#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JavaScript-modules-diagram/C:/Users/dieter/besturingssystemen2/practicum2/src/dataentities;C:/Users/dieter/besturingssystemen2/practicum2/src/gui;C:/Users/dieter/besturingssystemen2/practicum2/src/io;C:/Users/dieter/besturingssystemen2/practicum2/src/logic;">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JavaScript-modules-diagram</ID>
+          <OriginalElement>$PROJECT_DIR$/src/dataentities;C:/Users/dieter/besturingssystemen2/practicum2/src/gui;C:/Users/dieter/besturingssystemen2/practicum2/src/io;C:/Users/dieter/besturingssystemen2/practicum2/src/logic;</OriginalElement>
+          <nodes />
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="1660.5" y="799.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>All</Category>
+          </Categories>
+          <VISIBILITY>Details</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/dataentities.SystemVariables">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>dataentities.SystemVariables</OriginalElement>
+          <nodes>
+            <node x="" y="">dataentities.SystemVariables</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="84.5" y="18.0" />
+          <SelectedNodes />
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dataentities/SystemVariables.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
