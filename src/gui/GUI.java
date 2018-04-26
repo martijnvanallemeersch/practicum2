@@ -140,11 +140,20 @@ public class GUI extends JDialog {
         model.reload(root);
 
         this.listRAM.setListData(logic.getMemoryController().getRamEntries());
-
+        expandAllNodes(this.treePageTableList,0,treePageTableList.getRowCount());
 
     }
 
 
+    private void expandAllNodes(JTree tree, int startingIndex, int rowCount){
+        for(int i=startingIndex;i<rowCount;++i){
+            tree.expandRow(i);
+        }
+
+        if(tree.getRowCount()!=rowCount){
+            expandAllNodes(tree, rowCount, tree.getRowCount());
+        }
+    }
     private void onCancel() {
         // add your code here if necessary
         dispose();

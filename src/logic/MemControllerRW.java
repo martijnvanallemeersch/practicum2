@@ -70,7 +70,6 @@ public class MemControllerRW {
         return canFetchNext;
     }
 
-
     /**
      * Decodes the current instruction according its operation
      */
@@ -85,7 +84,7 @@ public class MemControllerRW {
         }
 
         if(currentInstruction.getOperation().equals("Write") || currentInstruction.getOperation().equals("Read")) {
-            splitAdres(currentInstruction.getAddress());
+            splitAddress(currentInstruction.getAddress());
             if (!pageTable.getpageTableEntry(splittedAddress[0]).isPresent()) {
                 PageTableEntry leastUsed = pageTable.pageTableEntryList().stream().filter(pte-> pte.isPresent()).sorted(Comparator.comparingInt(PageTableEntry::getLastAccess)).findFirst().get();
                 pageTable.moveEntryToRAM(splittedAddress[0], leastUsed.getFrameNumber(),clock);
@@ -97,7 +96,6 @@ public class MemControllerRW {
             if(currentInstruction.getOperation().equals("Write")){
                 totalWriteInstruction++;
                 pageTable.getpageTableEntry(splittedAddress[0]).setModified(true);
-
             }
             pageTable.getpageTableEntry(splittedAddress[0]).setLastAccess(clock);
         }
@@ -181,7 +179,11 @@ public class MemControllerRW {
      * @param pte the pte of the leased used
      */
     private void moveLeastUsedToHDD(PageTable pt, PageTableEntry pte) {
-        toHDDWrites++;
+        if(pte.isModified()){
+            toHDDWrites++;
+            pte.setModified(false);
+        }
+
         pt.moveEntryToHDD(pte.getPageNumber());
         pteInRam.remove(pte);
     }
@@ -197,6 +199,10 @@ public class MemControllerRW {
         pteInRam.add(pte);
         pt.moveEntryToRAM(pte.getPageNumber(),frameNumber,clock);
         ramEntries[frameNumber] = new RAMEntry(frameNumber, pt.getPid(), pte.getPageNumber());
+    }
+
+    public void getLEastUSed() {
+
     }
 
     /**
@@ -216,7 +222,10 @@ public class MemControllerRW {
         } else {
             for (int i = 0; i < pteToRemove.size(); i++) {
                 toRAMWrites++;
-
+                if(pteToRemove.get(i).isModified()){
+                    toHDDWrites++;
+                    pteToRemove.get(i).setModified(false);
+                }
 
                 int pteToRemoveFrameNumber = pteToRemove.get(i).getFrameNumber();
 
@@ -251,7 +260,7 @@ public class MemControllerRW {
      * Splits the addres into a page number and an offset and sets the global parameter
      * @param address the address that needs to be splitted
      */
-    private void splitAdres(int address) {
+    private void splitAddress(int address) {
         //split the bits: last 12 =  offset within page
         String paddedBinary = String.format("%16s", Integer.toBinaryString(address)).replace(' ', '0');
 
