@@ -86,6 +86,7 @@ public class MemControllerRW {
         if(currentInstruction.getOperation().equals("Write") || currentInstruction.getOperation().equals("Read")) {
             splitAddress(currentInstruction.getAddress());
             if (!pageTable.getpageTableEntry(splittedAddress[0]).isPresent()) {
+                System.out.println("Page not present.");
                 PageTableEntry leastUsed = pageTable.pageTableEntryList().stream().filter(pte-> pte.isPresent()).sorted(Comparator.comparingInt(PageTableEntry::getLastAccess)).findFirst().get();
                 pageTable.moveEntryToRAM(splittedAddress[0], leastUsed.getFrameNumber(),clock);
                 int frameNumber = leastUsed.getFrameNumber();
@@ -181,6 +182,7 @@ public class MemControllerRW {
     private void moveLeastUsedToHDD(PageTable pt, PageTableEntry pte) {
         if(pte.isModified()){
             toHDDWrites++;
+            System.out.println(pte.toString());
             pte.setModified(false);
         }
 
@@ -201,9 +203,6 @@ public class MemControllerRW {
         ramEntries[frameNumber] = new RAMEntry(frameNumber, pt.getPid(), pte.getPageNumber());
     }
 
-    public void getLEastUSed() {
-
-    }
 
     /**
      * redistributes the frames among the resting process in RAM when a process is terminated
@@ -221,11 +220,7 @@ public class MemControllerRW {
             }
         } else {
             for (int i = 0; i < pteToRemove.size(); i++) {
-                toRAMWrites++;
-                if(pteToRemove.get(i).isModified()){
-                    toHDDWrites++;
-                    pteToRemove.get(i).setModified(false);
-                }
+
 
                 int pteToRemoveFrameNumber = pteToRemove.get(i).getFrameNumber();
 
@@ -238,14 +233,20 @@ public class MemControllerRW {
                     modifier = 0;
                 }
 
-                PageTable ptToReplace = pageTableList.get(modifier);
-                PageTableEntry pteMRUNotInRam = ptToReplace.pageTableEntryList().stream().filter(pte -> !pte.isPresent()).sorted((pte1, pte2) -> Integer.compare(pte2.getLastAccess(), pte1.getLastAccess())).findFirst().get();
 
-                ptToReplace.moveEntryToRAM(pteMRUNotInRam.getPageNumber(), pteToRemove.get(i).getFrameNumber(), clock);
-                ramEntries[pteToRemoveFrameNumber] = new RAMEntry(pteToRemoveFrameNumber, ptToReplace.getPid(), pteMRUNotInRam.getPageNumber());
+
+                PageTable replacementPT = pageTableList.get(modifier);
+                PageTableEntry mruPTNotInRAM = replacementPT.pageTableEntryList().stream().filter(pte -> !pte.isPresent()).sorted((pte1, pte2) -> Integer.compare(pte2.getLastAccess(), pte1.getLastAccess())).findFirst().get();
+
+                //ptToReplace.moveEntryToRAM(pteMRUNotInRam.getPageNumber(), pteToRemove.get(i).getFrameNumber(), clock);
+                //ramEntries[pteToRemoveFrameNumber] = new RAMEntry(pteToRemoveFrameNumber, ptToReplace.getPid(), pteMRUNotInRam.getPageNumber());
+
+                moveLeastUsedToHDD(pageTableToRemove,pteToRemove.get(i));
+                moveNewToRAM(replacementPT,mruPTNotInRAM,pteToRemoveFrameNumber);
 
                 pteInRam.remove(pteToRemove.get(i));
-                pteInRam.add(pteMRUNotInRam);
+                pteInRam.add(mruPTNotInRAM);
+
 
             }
         }
