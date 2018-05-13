@@ -86,7 +86,6 @@ public class MemControllerRW {
         if(currentInstruction.getOperation().equals("Write") || currentInstruction.getOperation().equals("Read")) {
             splitAddress(currentInstruction.getAddress());
             if (!pageTable.getpageTableEntry(splittedAddress[0]).isPresent()) {
-                System.out.println("Page not present.");
                 PageTableEntry leastUsed = pageTable.pageTableEntryList().stream().filter(pte-> pte.isPresent()).sorted(Comparator.comparingInt(PageTableEntry::getLastAccess)).findFirst().get();
                 pageTable.moveEntryToRAM(splittedAddress[0], leastUsed.getFrameNumber(),clock);
                 int frameNumber = leastUsed.getFrameNumber();
@@ -182,7 +181,6 @@ public class MemControllerRW {
     private void moveLeastUsedToHDD(PageTable pt, PageTableEntry pte) {
         if(pte.isModified()){
             toHDDWrites++;
-            System.out.println(pte.toString());
             pte.setModified(false);
         }
 
